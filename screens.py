@@ -6559,22 +6559,27 @@ class Nuevo(tk.Frame):
             pady=5
         )  
         nombre= tk.StringVar()
-
         Frame2 = tk.Frame(self)
         Frame2.configure(background=style.PLOMO, height=200, width=400)
-
         l = tk.Label(Frame1, text="Nombre Tabla:").pack()
         en = tk.Entry(Frame1, textvariable=nombre).pack()
         columnas= tk.IntVar()
         l = tk.Label(Frame1, text="Cantidad de columnas:").pack()
         en = tk.Entry(Frame1, textvariable=columnas).pack()
         b = tk.Button(Frame1, text="Crear Tabla", command= lambda: crear_tabla(Frame2,nombre,columnas)).pack()
-        
+
+        tabla_eliminar= tk.StringVar()
+        l = tk.Label(Frame2, text="Tabla a eliminar:").pack()
+        en = tk.Entry(Frame2, textvariable=tabla_eliminar).pack()
+        b = tk.Button(Frame2, text="Eliminar Tabla", command= lambda: eliminar_tabla(tabla_eliminar)).pack()
         Frame2.pack()
+
+
 
 nuevas_columnas = []
 nuevos_tipos = []
 boton_columna = 0
+#Tabla de graficos si o si necesita fecha
 
 def columna_seleccionada(event):
     global nuevas_columnas, nuevos_tipos
@@ -6640,32 +6645,51 @@ def crear_columnas(nombre):
                         swCol = True
                 cont_aux += 1
         contador += 1
-    if swCol:
-        messagebox.showerror('Error', 'Columna ya existe y se quiere colocar un nuevo tipo de dato')
-    if sw:
-        messagebox.showerror('Error', 'No puede haber columnas sin nombre')
+   
     sw1 = False
     swFloat = False
+    swFecha = False
+    swAño = False
+    swMes = False
+    swDATE = 0
     for t in nuevos_tipos:
         if t.get() == "":
             sw1 = True
-        if t.get() == "FLOAT":
+        elif t.get() == "FLOAT":
             swFloat = True
+        elif t.get() == "FECHA":
+            swFecha = True
+            swDATE = 2
+        elif t.get() == "AÑO":
+            swAño = True
+            swDATE += 1
+        elif t.get() == "MES":
+            swMes = True
+            swDATE += 1
     if sw1:
         messagebox.showerror('Error', 'Tiene que especificar el tipo de dato de cada columna')
-
-    if sw or sw1 or swCol:
-        pass
+    elif swCol:
+        messagebox.showerror('Error', 'Columna ya existe y se quiere colocar un nuevo tipo de dato')
+    elif sw:
+        messagebox.showerror('Error', 'No puede haber columnas sin nombre')
+    if swDATE != 2:
+        if swDATE == 0:
+            messagebox.showerror('Error', 'No se puede graficar sin fecha')
+        elif swDATE == 1:
+            messagebox.showerror('Error', 'Se necesita año y mes minimo para graficas')
+        else:
+            messagebox.showerror('Error', 'Error con las columnas de tipo fecha, año, mes, solo puede haber una de cada una')
     else:
-        print("Se puede crear")
+        #print("Se puede crear")
         tipo = "TEXTO"
         if swFloat:
             tipo = "GRAFICO"
-        #
-        # agregar_tabla(tipo,nombre)
-        #agregar_val_unicos(nombre)
-        #agregar_tipos_datos()
-        #agregar_tabla_a_tablas(nombre)
+        
+        agregar_tabla(tipo,nombre)
+        agregar_val_unicos(nombre)
+        agregar_tipos_datos()
+        agregar_tabla_a_tablas(nombre)
+        messagebox.showinfo('Creación de Tabla','Se creo la tabla con exito')
 
 def agregar_tabla(tipo, tabla):
     lug = ""
@@ -6677,7 +6701,7 @@ def agregar_tabla(tipo, tabla):
         for linea in archivo:
             linea=linea.strip("\n")
     with open("Ficheros/Datos_tablas/"+lug, mode="w",encoding="utf-8") as archivo:
-        archivo.write(linea+","+tabla+"\n")
+        archivo.write(linea+","+tabla)
     os.mkdir("Ficheros/Tablas/"+tabla)
     
 def agregar_val_unicos(tabla):
@@ -6724,7 +6748,6 @@ def agregar_tipos_datos():
             archivo.write(aux+"\n")
 
 def agregar_tabla_a_tablas(nombre):
-
     global nuevas_columnas, nuevos_tipos
     m = []
     with open("Ficheros/Datos_tablas/tablas.txt","r",encoding="utf-8") as archivo:
@@ -6747,3 +6770,82 @@ def agregar_tabla_a_tablas(nombre):
                 aux = aux+cas+ "," 
             aux+=linea[-1]
             archivo.write(aux+"\n")
+
+def eliminar_tabla(nombre):
+    nombre = nombre.get()
+    m = []
+    col_aux=[]
+    with open("Ficheros/Datos_tablas/tablas.txt", mode="r", encoding="utf-8") as archivo:
+        for linea in archivo:
+            linea = linea.strip("\n")
+            l_aux=linea
+            linea = linea.split(",")
+            if linea[0] != nombre:
+                m.append(l_aux)
+            else:
+                col_aux = linea
+
+    
+    col2 = []
+    #print(col_aux)
+    swB=True
+    conjunto = set()
+    for linea in m:
+        linea = linea.split(",")
+        for col in linea:
+            conjunto.add(col)
+    #print(conjunto)
+
+    for cole in col_aux:
+        if cole in conjunto:
+            pass
+        else:
+            col2.append(cole)
+    print(col2)
+    mat_aux = []
+    with open("Ficheros/Datos_tablas/tipos_datos.txt", mode="r", encoding="utf-8") as archivo:
+        for linea in archivo:
+            linea = linea.strip("\n")
+            linea=linea.split(",")
+            l = ""
+            for col in linea:
+                if col not in col2:
+                    l += col+","
+            mat_aux.append(l[:-1])
+    #print(mat_aux)
+    with open("Ficheros/Datos_tablas/tipos_datos.txt", mode="w", encoding="utf-8") as archivo:
+        for lin in mat_aux:
+            archivo.write(lin+"\n")
+    with open("Ficheros/Datos_tablas/tablas.txt", mode="w", encoding="utf-8") as archivo:
+        for lin in m:
+            archivo.write(lin+"\n")
+
+    os.remove("Ficheros/Valores Unicos/"+nombre+".txt")
+    os.remove("Ficheros/Enlaces/"+nombre+".txt")
+    shutil.rmtree("Ficheros/Tablas/"+nombre)
+
+    with open("Ficheros/Datos_tablas/TABLA_DE_TEXTO.txt", mode="r", encoding="utf-8") as archivo:
+        for linea in archivo:
+            linea = linea.strip("\n")
+            l_aux=linea.split(",")
+
+    l_e = ""
+    for tabla in l_aux:
+        if tabla != nombre:
+            l_e += tabla + ","
+    
+    with open("Ficheros/Datos_tablas/TABLA_DE_TEXTO.txt", mode="w") as archivo:
+        archivo.write(l_e[:-1])
+
+    with open("Ficheros/Datos_tablas/TABLAS_DE_GRAFICOS.txt", mode="r") as archivo:
+        for linea in archivo:
+            linea = linea.strip("\n")
+            l_aux=linea.split(",")
+
+    l_e = ""
+    for tabla in l_aux:
+        if tabla != nombre:
+            l_e += tabla + ","
+    
+    with open("Ficheros/Datos_tablas/TABLAS_DE_GRAFICOS.txt", mode="w") as archivo:
+        archivo.write(l_e[:-1])
