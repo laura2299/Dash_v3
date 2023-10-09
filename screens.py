@@ -6670,7 +6670,7 @@ def crear_tabla(nombre, columnas):
     else:
         #print("Se puede continuar")
         #print(container)
-        tipos = ("FECHA","AÑO","MES","DIA","CADENAS","FLOAT","DESCRIPCION","VALORES_UNICOS","HORAS")
+        tipos = ("FECHA","AÑO","MES","DIA","CADENAS","FLOAT","DESCRIPCIÓN","VALORES_UNICOS","HORAS")
         ventana_col = tk.Toplevel()
         ventana_col.title("Agregación de Columnas")
         panel = tk.Canvas(ventana_col)
@@ -6781,6 +6781,13 @@ def agregar_tabla(tipo, tabla):
         lug="TABLA_DE_TEXTO.txt"
     else:
         lug="TABLAS_DE_GRAFICOS.txt"
+        lug1="TABLA_DE_TEXTO.txt"
+        with open("Ficheros/Datos_tablas/"+lug1, mode="r",encoding="utf-8") as archivo:
+            for linea in archivo:
+                linea=linea.strip("\n")
+        with open("Ficheros/Datos_tablas/"+lug1, mode="w",encoding="utf-8") as archivo:
+            archivo.write(linea+","+tabla)
+
     with open("Ficheros/Datos_tablas/"+lug, mode="r",encoding="utf-8") as archivo:
         for linea in archivo:
             linea=linea.strip("\n")
@@ -6887,7 +6894,7 @@ def eliminar_tabla(nombre):
                 pass
             else:
                 col2.append(cole)
-        print(col2)
+        #print(col2)
         mat_aux = []
         with open("Ficheros/Datos_tablas/tipos_datos.txt", mode="r", encoding="utf-8") as archivo:
             for linea in archivo:
@@ -6935,5 +6942,6 @@ def eliminar_tabla(nombre):
         
         with open("Ficheros/Datos_tablas/TABLAS_DE_GRAFICOS.txt", mode="w") as archivo:
             archivo.write(l_e[:-1])
+        messagebox.showinfo('Eliminación de Tabla','Se eliminó la tabla con exito')
     else:
         messagebox.showerror('Error', 'Tabla no encontrada')

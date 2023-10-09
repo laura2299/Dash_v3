@@ -5,7 +5,7 @@ from screens import Grafico,Texto,Excel,Home,Nuevo
 class Manager(tk.Tk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args,**kwargs)
-        self.title("Seelin Dashboard")
+        self.title("Dashboard")
         #self.state('zoomed')
         #self.minsize(1000,700)
         container = tk.Frame(self)
