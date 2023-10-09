@@ -8,5 +8,5 @@ if __name__ == "__main__":
     app.columnconfigure(0, weight=1)
     app.columnconfigure(1, weight=1)
     app.mainloop()
-    print("hola")
+    
     

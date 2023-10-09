@@ -1,0 +1,6 @@
+FECHA
+NIT;30;15;22;45;47;42;8;9;16;20;11;28;48;36;1;7;6;12;33;26;5;43;4;13;14;23;38;41;3;25;40;32;35;21;46;10;49;34;29;31;2;18;39;44
+NOMBRE_PRODUCTO;Lapiz_S_3h;marcadores_12;plastaformo;cinta adheciva;lapices de color_12;resaltador;pegamento_V;borrador;tapas_carpeta;corrector_barra;cuaderno_50;cuaderno_100;anillado_50;marcadores_13;lapices de color_13;marcadores_14;lapices de color_14;marcadores_15;lapices de color_15;marcadores_16;lapices de color_16;marcadores_17;marcadores_18;lapices de color_17;marcadores_19;marcadores_20;lapices de color_18;marcadores_21;marcadores_22
+PRECIO_VENTA_U
+CANTIDAD
+TOTAL
