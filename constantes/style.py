@@ -10,7 +10,7 @@ CELESTE = "#642563"
 FONT= ("Arial", 26)
 
 
-
+BLANCO = "#fff"
 STYLE = {
     "font": FONT,
     "bg": COMPONENT,

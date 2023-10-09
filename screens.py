@@ -21,10 +21,10 @@ from matplotlib.backends.backend_tkagg import (
     FigureCanvasTkAgg,
     NavigationToolbar2Tk
 )
-import jpype
-import asposecells
-jpype.startJVM()
-from asposecells.api import Workbook,TxtLoadOptions
+#import jpype
+#import asposecells
+#jpype.startJVM()
+#from asposecells.api import Workbook,TxtLoadOptions
 from tkinter import filedialog
 
 
@@ -1994,12 +1994,6 @@ def Grafica_barras_embalses(tabla,columnas,filtro_datos,cadena):
     axes.set_title("Diferencia de Final - Inicial segun "+cadena)
     axes.set_ylabel('Sumatoria de floats')
     figure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)   
-
-
-  
-
-
-
 
 ######################BOTON QUE LE PIDE QUE ELIja el tipo de grafica
 def tipo_grafica(container,columnas,tipos):
@@ -4709,6 +4703,8 @@ class Grafico(tk.Frame):
         self.controller.show_frame(Texto)
     def move_to_cargar(self):
         self.controller.show_frame(Excel)
+    def move_to_agregar(self):
+        self.controller.show_frame(Nuevo)
 
     def ventana_grafico(self):
         top1= tk.Toplevel(self.controller)
@@ -4774,6 +4770,20 @@ class Grafico(tk.Frame):
             Frame1,
             text="Filtros de texto",
             command=self.move_to_ftexto,
+            **style.STYLE2,
+            relief= tk.FLAT,
+            activebackground=style.BACKGROUND,
+            activeforeground= style.TEXT,
+        ).pack(
+            side =tk.LEFT,
+            fill=tk.X,
+            padx=22,
+            pady=11
+        )
+        tk.Button(
+            Frame1,
+            text="Agregar/Eliminar",
+            command=self.move_to_agregar,
             **style.STYLE2,
             relief= tk.FLAT,
             activebackground=style.BACKGROUND,
@@ -5453,8 +5463,6 @@ def guardar_excel():
             messagebox.showinfo(message="Se encontraron valores negativos los cuales se les remplazo con cero", title="Modificacion de datos")
     messagebox.showinfo(message="Excel Guardado con Exito", title="Guardado de Excel")
 
-
-
 def exportar_filtros(tipos, columnas):
     global filtros_form_grafico
     archivo = open("Cache/Cache_Filtros/filtros.txt",mode="w",encoding="utf-8")
@@ -5947,6 +5955,8 @@ class Texto(tk.Frame):
         self.controller.show_frame(Texto)
     def move_to_cargar(self):
         self.controller.show_frame(Excel)
+    def move_to_agregar(self):
+        self.controller.show_frame(Nuevo)
         
 
     def init_widgets(self):
@@ -6003,6 +6013,21 @@ class Texto(tk.Frame):
             padx=22,
             pady=11
         )
+        tk.Button(
+            Frame1,
+            text="Agregar/Eliminar",
+            command=self.move_to_agregar,
+            **style.STYLE2,
+            relief= tk.FLAT,
+            activebackground=style.BACKGROUND,
+            activeforeground= style.TEXT,
+        ).pack(
+            side =tk.LEFT,
+            fill=tk.X,
+            padx=22,
+            pady=11
+        )
+        
         tk.Label(
             self,
             text="Filtros de texto",
@@ -6152,6 +6177,8 @@ class Excel(tk.Frame):
         self.controller.show_frame(Texto)
     def move_to_cargar(self):
         self.controller.show_frame(Excel)
+    def move_to_agregar(self):
+        self.controller.show_frame(Nuevo)
 
     def init_widgets(self):
         Frame1=tk.Frame(self)
@@ -6197,6 +6224,20 @@ class Excel(tk.Frame):
             Frame1,
             text="Filtros de texto",
             command=self.move_to_ftexto,
+            **style.STYLE2,
+            relief= tk.FLAT,
+            activebackground=style.BACKGROUND,
+            activeforeground= style.TEXT,
+        ).pack(
+            side =tk.LEFT,
+            fill=tk.X,
+            padx=22,
+            pady=11
+        )
+        tk.Button(
+            Frame1,
+            text="Agregar/Eliminar",
+            command=self.move_to_agregar,
             **style.STYLE2,
             relief= tk.FLAT,
             activebackground=style.BACKGROUND,
@@ -6457,8 +6498,6 @@ def Exportar_datos(columnas,tipos,container):
     boton_descargar = tk.Button(container, text="Descargar Archivo", command=lambda: descargar_archivo(tabla,fechaformateada))
     boton_descargar.pack(pady=20)    
 
-
-
 class Home(tk.Frame):
 
     def __init__(self,parent,controller):
@@ -6480,7 +6519,7 @@ class Home(tk.Frame):
 class Nuevo(tk.Frame):
     def __init__(self,parent,controller):
         super().__init__(parent)
-        self.configure(background=style.BACKGROUND)
+        self.configure(background=style.PLOMO)
         self.controller = controller
         self.graficoMode = tk.StringVar(self,value="Normal")
         self.init_widgets()
@@ -6493,6 +6532,8 @@ class Nuevo(tk.Frame):
         self.controller.show_frame(Texto)
     def move_to_cargar(self):
         self.controller.show_frame(Excel)
+    def move_to_agregar(self):
+        self.controller.show_frame(Nuevo)
 
     def init_widgets(self):
         Frame1=tk.Frame(self)
@@ -6547,6 +6588,31 @@ class Nuevo(tk.Frame):
             padx=22,
             pady=11
         )
+        tk.Button(
+            Frame1,
+            text="Agregar/Eliminar",
+            command=self.move_to_agregar,
+            **style.STYLE2,
+            relief= tk.FLAT,
+            activebackground=style.BACKGROUND,
+            activeforeground= style.TEXT,
+        ).pack(
+            side =tk.LEFT,
+            fill=tk.X,
+            padx=22,
+            pady=11
+        )
+        tk.Label(
+            self,
+            text="Agregar o Elimnar Archivos",
+            justify=tk.CENTER,
+            **style.STYLE
+            ).pack(
+            side = tk.TOP,
+            fill= tk.BOTH,
+            padx= 22,
+            pady= 5
+            )
 
     def form_nuevo(self):
         Frame1=tk.Frame(self)
@@ -6558,23 +6624,26 @@ class Nuevo(tk.Frame):
             padx=12,
             pady=5
         )  
+        
+
+
         nombre= tk.StringVar()
-        Frame2 = tk.Frame(self)
-        Frame2.configure(background=style.PLOMO, height=200, width=400)
+
         l = tk.Label(Frame1, text="Nombre Tabla:").pack()
         en = tk.Entry(Frame1, textvariable=nombre).pack()
         columnas= tk.IntVar()
         l = tk.Label(Frame1, text="Cantidad de columnas:").pack()
         en = tk.Entry(Frame1, textvariable=columnas).pack()
-        b = tk.Button(Frame1, text="Crear Tabla", command= lambda: crear_tabla(Frame2,nombre,columnas)).pack()
+        b = tk.Button(Frame1, text="Crear Tabla", command= lambda: crear_tabla(nombre,columnas)).pack()
 
+        Frame3 = tk.Frame(self)
+        Frame3.configure(background=style.BLANCO, height=200, width=400)
         tabla_eliminar= tk.StringVar()
-        l = tk.Label(Frame2, text="Tabla a eliminar:").pack()
-        en = tk.Entry(Frame2, textvariable=tabla_eliminar).pack()
-        b = tk.Button(Frame2, text="Eliminar Tabla", command= lambda: eliminar_tabla(tabla_eliminar)).pack()
-        Frame2.pack()
+        l = tk.Label(Frame3, text="Tabla a eliminar:").pack()
+        en = tk.Entry(Frame3, textvariable=tabla_eliminar).pack()
+        b = tk.Button(Frame3, text="Eliminar Tabla", command= lambda: eliminar_tabla(tabla_eliminar)).pack()
 
-
+        Frame3.pack()
 
 nuevas_columnas = []
 nuevos_tipos = []
@@ -6591,7 +6660,7 @@ def columna_seleccionada(event):
             linea = linea.split(",")
             m.append(linea)
     
-def crear_tabla(container, nombre, columnas):
+def crear_tabla(nombre, columnas):
     global nuevas_columnas, nuevos_tipos, boton_columna
     nombre = nombre.get()
     columnas = columnas.get()
@@ -6602,6 +6671,21 @@ def crear_tabla(container, nombre, columnas):
         #print("Se puede continuar")
         #print(container)
         tipos = ("FECHA","AÑO","MES","DIA","CADENAS","FLOAT","DESCRIPCION","VALORES_UNICOS","HORAS")
+        ventana_col = tk.Toplevel()
+        ventana_col.title("Agregación de Columnas")
+        panel = tk.Canvas(ventana_col)
+        panel.config(background="#F9F9F9",width="700", height="400")
+        panel.pack(side="left", fill="y")
+
+        scroll_vertical = tk.Scrollbar(ventana_col, orient='vertical', command=panel.yview)
+        scroll_vertical.pack(side="left", fill="y")
+
+        panel.configure(yscrollcommand=scroll_vertical.set)
+        panel.bind("<Configure>", lambda e: panel.configure(scrollregion=panel.bbox("all")))
+
+        container = tk.Frame(panel)
+
+        panel.create_window((0,0), window=container, anchor="nw", width="700")
         for i in range(columnas):
             nom= tk.StringVar()
             l = tk.Label(container, text="Nombre de columna "+str(i+1)+":").pack()
@@ -6774,78 +6858,82 @@ def agregar_tabla_a_tablas(nombre):
 def eliminar_tabla(nombre):
     nombre = nombre.get()
     m = []
-    col_aux=[]
-    with open("Ficheros/Datos_tablas/tablas.txt", mode="r", encoding="utf-8") as archivo:
-        for linea in archivo:
-            linea = linea.strip("\n")
-            l_aux=linea
+    col_aux=[] 
+    tablas = sacar_tablas()
+    if nombre in tablas:
+        with open("Ficheros/Datos_tablas/tablas.txt", mode="r", encoding="utf-8") as archivo:
+            for linea in archivo:
+                linea = linea.strip("\n")
+                l_aux=linea
+                linea = linea.split(",")
+                if linea[0] != nombre:
+                    m.append(l_aux)
+                else:
+                    col_aux = linea
+
+        
+        col2 = []
+        #print(col_aux)
+        swB=True
+        conjunto = set()
+        for linea in m:
             linea = linea.split(",")
-            if linea[0] != nombre:
-                m.append(l_aux)
-            else:
-                col_aux = linea
-
-    
-    col2 = []
-    #print(col_aux)
-    swB=True
-    conjunto = set()
-    for linea in m:
-        linea = linea.split(",")
-        for col in linea:
-            conjunto.add(col)
-    #print(conjunto)
-
-    for cole in col_aux:
-        if cole in conjunto:
-            pass
-        else:
-            col2.append(cole)
-    print(col2)
-    mat_aux = []
-    with open("Ficheros/Datos_tablas/tipos_datos.txt", mode="r", encoding="utf-8") as archivo:
-        for linea in archivo:
-            linea = linea.strip("\n")
-            linea=linea.split(",")
-            l = ""
             for col in linea:
-                if col not in col2:
-                    l += col+","
-            mat_aux.append(l[:-1])
-    #print(mat_aux)
-    with open("Ficheros/Datos_tablas/tipos_datos.txt", mode="w", encoding="utf-8") as archivo:
-        for lin in mat_aux:
-            archivo.write(lin+"\n")
-    with open("Ficheros/Datos_tablas/tablas.txt", mode="w", encoding="utf-8") as archivo:
-        for lin in m:
-            archivo.write(lin+"\n")
+                conjunto.add(col)
+        #print(conjunto)
 
-    os.remove("Ficheros/Valores Unicos/"+nombre+".txt")
-    os.remove("Ficheros/Enlaces/"+nombre+".txt")
-    shutil.rmtree("Ficheros/Tablas/"+nombre)
+        for cole in col_aux:
+            if cole in conjunto:
+                pass
+            else:
+                col2.append(cole)
+        print(col2)
+        mat_aux = []
+        with open("Ficheros/Datos_tablas/tipos_datos.txt", mode="r", encoding="utf-8") as archivo:
+            for linea in archivo:
+                linea = linea.strip("\n")
+                linea=linea.split(",")
+                l = ""
+                for col in linea:
+                    if col not in col2:
+                        l += col+","
+                mat_aux.append(l[:-1])
+        #print(mat_aux)
+        with open("Ficheros/Datos_tablas/tipos_datos.txt", mode="w", encoding="utf-8") as archivo:
+            for lin in mat_aux:
+                archivo.write(lin+"\n")
+        with open("Ficheros/Datos_tablas/tablas.txt", mode="w", encoding="utf-8") as archivo:
+            for lin in m:
+                archivo.write(lin+"\n")
 
-    with open("Ficheros/Datos_tablas/TABLA_DE_TEXTO.txt", mode="r", encoding="utf-8") as archivo:
-        for linea in archivo:
-            linea = linea.strip("\n")
-            l_aux=linea.split(",")
+        os.remove("Ficheros/Valores Unicos/"+nombre+".txt")
+        os.remove("Ficheros/Enlaces/"+nombre+".txt")
+        shutil.rmtree("Ficheros/Tablas/"+nombre)
 
-    l_e = ""
-    for tabla in l_aux:
-        if tabla != nombre:
-            l_e += tabla + ","
-    
-    with open("Ficheros/Datos_tablas/TABLA_DE_TEXTO.txt", mode="w") as archivo:
-        archivo.write(l_e[:-1])
+        with open("Ficheros/Datos_tablas/TABLA_DE_TEXTO.txt", mode="r", encoding="utf-8") as archivo:
+            for linea in archivo:
+                linea = linea.strip("\n")
+                l_aux=linea.split(",")
 
-    with open("Ficheros/Datos_tablas/TABLAS_DE_GRAFICOS.txt", mode="r") as archivo:
-        for linea in archivo:
-            linea = linea.strip("\n")
-            l_aux=linea.split(",")
+        l_e = ""
+        for tabla in l_aux:
+            if tabla != nombre:
+                l_e += tabla + ","
+        
+        with open("Ficheros/Datos_tablas/TABLA_DE_TEXTO.txt", mode="w") as archivo:
+            archivo.write(l_e[:-1])
 
-    l_e = ""
-    for tabla in l_aux:
-        if tabla != nombre:
-            l_e += tabla + ","
-    
-    with open("Ficheros/Datos_tablas/TABLAS_DE_GRAFICOS.txt", mode="w") as archivo:
-        archivo.write(l_e[:-1])
+        with open("Ficheros/Datos_tablas/TABLAS_DE_GRAFICOS.txt", mode="r") as archivo:
+            for linea in archivo:
+                linea = linea.strip("\n")
+                l_aux=linea.split(",")
+
+        l_e = ""
+        for tabla in l_aux:
+            if tabla != nombre:
+                l_e += tabla + ","
+        
+        with open("Ficheros/Datos_tablas/TABLAS_DE_GRAFICOS.txt", mode="w") as archivo:
+            archivo.write(l_e[:-1])
+    else:
+        messagebox.showerror('Error', 'Tabla no encontrada')
