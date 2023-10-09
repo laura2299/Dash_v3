@@ -21,10 +21,10 @@ from matplotlib.backends.backend_tkagg import (
     FigureCanvasTkAgg,
     NavigationToolbar2Tk
 )
-#import jpype
-#import asposecells
-#jpype.startJVM()
-#from asposecells.api import Workbook,TxtLoadOptions
+import jpype
+import asposecells
+jpype.startJVM()
+from asposecells.api import Workbook,TxtLoadOptions
 from tkinter import filedialog
 
 
@@ -175,10 +175,11 @@ def devolver_floats(columnas):
 def devolver_cadenas(columnas):
     
     cadenas=[]
-    for i,columna in enumerate (columnas):
+    tipos=tipos_datos(columnas)
+    for i,tipo in enumerate (tipos):
         #print(columnas[i])
-        if(columnas[i] =="EMPRESA" or columnas[i]=="ÁREA" or columnas[i]=="SISTEMA" or columnas[i]=="TIPO"):
-            cadenas.append(columna)
+        if(tipos[i] =="VALORES_UNICOS" ):
+            cadenas.append(columnas[i])
     
     print("devolver cadenas:")
     print(cadenas)
@@ -2134,7 +2135,7 @@ def elige_barras(container,columnas,filtro_datos):
                     ) 
     tk.Button(
             Frame1,
-            text="Cantidad de energia por empresas,area,tipo",
+            text="Cantidad de datos numericos por datos unicos",
             command=lambda:Grafica_barras_por_cadenas(container,filtro_datos,columnas),
             **style.STYLE2,
             relief= tk.FLAT,
@@ -2150,7 +2151,7 @@ def elige_barras(container,columnas,filtro_datos):
     if "FECHA" in tipos or "DIA" in tipos:
         tk.Button(
                 Frame1,
-                text="cantidad de energia al dia por fechas ",
+                text="Cantidad de datos numericos por datos unicos por fechas ",
                 command=lambda:graficar_barras_por_fechas(container,filtro_datos,columnas),
                 **style.STYLE2,
                 relief= tk.FLAT,
@@ -2709,7 +2710,7 @@ def elige_lineal(container,columnas,filtro_datos,res,columnas_grafico):
                     ) 
     tk.Button(
             Frame1,
-            text="Cantidad de energia por empresas,area,tipo",
+            text="Cantidad de datos numericos por datos unicos",
             command=lambda:Grafica_lineal_por_cadenas(container,filtro_datos,columnas),
             **style.STYLE2,
             relief= tk.FLAT,
@@ -2725,7 +2726,7 @@ def elige_lineal(container,columnas,filtro_datos,res,columnas_grafico):
     if "FECHA" in tipos or "DIA" in tipos:
         tk.Button(
                 Frame1,
-                text="cantidad de energia al dia por fechas ",
+                text="Cantidad de datos numericos por datos unicos por fechas ",
                 command=lambda:graficar_lineal_por_fechas(container,filtro_datos,columnas),
                 **style.STYLE2,
                 relief= tk.FLAT,
@@ -3274,7 +3275,7 @@ def elige_torta(container,columnas,filtro_datos,res,columnas_grafico):
                     ) 
     tk.Button(
             Frame1,
-            text="Porcentaje de energia por empresa o area o sistema etc",
+            text="Porcentaje de datos numericos por datos unicos",
             command=lambda:Grafica_torta_por_cadenas(container,filtro_datos,columnas),
             **style.STYLE2,
             relief= tk.FLAT,
@@ -3286,20 +3287,7 @@ def elige_torta(container,columnas,filtro_datos,res,columnas_grafico):
             padx=22,
             pady=11
         )
-    tk.Button(
-            Frame1,
-            text="Porcentaje de energia por horas ",
-            command=lambda:graficar_datos_torta_horas(columnas),
-            **style.STYLE2,
-            relief= tk.FLAT,
-            activebackground=style.BACKGROUND,
-            activeforeground= style.TEXT,
-        ).pack(
-            side =tk.LEFT,
-            fill=tk.X,
-            padx=22,
-            pady=11
-        )
+    
     if "H1" in columnas :
         tk.Button(
                 Frame1,
@@ -6670,7 +6658,7 @@ def crear_tabla(nombre, columnas):
     else:
         #print("Se puede continuar")
         #print(container)
-        tipos = ("FECHA","AÑO","MES","DIA","CADENAS","FLOAT","DESCRIPCION","VALORES_UNICOS","HORAS")
+        tipos = ("FECHA","AÑO","MES","DIA","CADENAS","FLOAT","DESCRIPCIÓN","VALORES_UNICOS","HORAS")
         ventana_col = tk.Toplevel()
         ventana_col.title("Agregación de Columnas")
         panel = tk.Canvas(ventana_col)
