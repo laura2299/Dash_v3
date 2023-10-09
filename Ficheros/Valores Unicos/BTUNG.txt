@@ -1,0 +1,35 @@
+AÑO
+MES
+DÍA
+EMPRESA;De La Paz;ENFAC;Emprelpaz;Camboraya;Alt & Assoc.ca;EDEL;SSA;Mamboraya;Corani;Caterina;Ejemplo1
+ÁREA;La Paz;Sucre;Oriente;Occidente;Oruro;Santa Cruz;Cochabamba;Norte;Chuquisaca;Beni;Oeste;Pando ;Este;Tarija;Coochabamba;Sur
+SISTEMA;Rios;Corani;Altiplano;Montañas;Zongo;Valles
+TIPO;Termo;Eolico;Forzado;Hidro
+CENTRAL;Dar;Cor;EFF;Sac;Aff
+UNIDAD
+NODO
+kV
+H1
+H2
+H3
+H4
+H5
+H6
+H7
+H8
+H9
+H10
+H11
+H12
+H13
+H14
+H15
+H16
+H17
+H18
+H19
+H20
+H21
+H22
+H23
+H24

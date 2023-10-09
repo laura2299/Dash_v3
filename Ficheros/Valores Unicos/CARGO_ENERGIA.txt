@@ -1,0 +1,28 @@
+FECHA
+EMPRESA;ENFAC;Mamboraya;EDEL;Emprelpaz;Corani;SSA;Ejemplo1;Camboraya;De La Paz;Alt & Assoc.ca;Caterina;CECBB;CESSA;COBEE;COBOCE;CORANI;CRE;EGSA;ELFEC;ELFEO;EMIRSA;EMVINTO;EPZ;ERESA;HB;SEPSA;SYNERGIA;VHE
+ÁREA;Sur;Occidente;La Paz;Coochabamba;Chuquisaca;Santa Cruz;Norte;Tarija;Cochabamba;Beni;Oeste;Sucre;Pando ;Oruro;Oriente;Este;CENTRAL;SUR;NORTE;ORIENTAL;ORURO
+TIPO;Forzado;Termo;Hidro;Eolico;G;D
+H1
+H2
+H3
+H4
+H5
+H6
+H7
+H8
+H9
+H10
+H11
+H12
+H13
+H14
+H15
+H16
+H17
+H18
+H19
+H20
+H21
+H22
+H23
+H24

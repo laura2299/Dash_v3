@@ -1,0 +1,17 @@
+ÁREA
+EMPRESA
+UNIDAD
+DESCRIPCIÓN
+CODIGO
+Tr
+Vimax
+Vimin
+Tc
+Tb
+Ta
+Vrmax
+Vrmin
+Kc
+Ka
+Kf
+Tf

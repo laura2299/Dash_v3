@@ -1,0 +1,17 @@
+AÑO
+MES
+EMPRESA
+ÁREA
+SISTEMA
+TIPO
+NODO
+kV
+Bs_kW_PF
+Bs_kW_PD
+Bs_kW_RF
+Bs_MWh_TDE
+Bs_MWh_ISA
+Bs_MWh_EA
+Bs_kW_PA
+Bs_kW_PDA
+Bs_kW_RFA

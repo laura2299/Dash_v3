@@ -1,0 +1,14 @@
+ÁREA
+EMPRESA
+STI
+CODIGO
+NODO
+MVA
+kVbase
+Ro
+Xlo
+Rt
+Xlt
+kWHierro
+kVArHierro
+CONEXIÓN

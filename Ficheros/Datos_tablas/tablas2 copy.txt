@@ -1,0 +1,3 @@
+CP&T%,IMW,BTU/PC,BTU/lt,US$/MPC,US$/MMBTU,US$/lt,US$/MMBTU,50%,75%,100%,D50%,D75%,D100%,US$/MWh,Al90%,Al85%,Al81%,A0,A,B,ORDEN,P Efectiva
+
+PRECIOS2,,,,,,,,Bs/kW-mes PF,Bs/kW-mes PD,Bs/kW-mes RF,Bs/MWh TDE,Bs/MWh ISA,Bs/MWh EA,Bs/kW-mes PA,Bs/kW-mes PDA,Bs/kW-mes RFA

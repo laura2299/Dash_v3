@@ -1,0 +1,9 @@
+FECHA,FECHA
+AÑO,AÑO
+MES,MES
+DIA,DÍA
+CADENAS,AUTO,CODIGO,MW,NODO1,INTERRUPTOR1,NODO2,INTERRUPTOR2,MVA,PkV,SkV,R,Xl,Ro,Xlo,TAPpu,TAPmin,TAPmax,TAPpaso,kWHierro,kVArHierro,KVArHierro,RoPT,RoST,MVASob,SISTEMA,TIPO,CENTRAL,UNIDAD,NODO,EMBALSE,CAUDAL,CPARAL,MVAr,CSER,MVAbase,kVbase,Xc,Z,V,E,CAPACIDAD,INICIAL,FINAL,DESCRIPCIÓN,Tr,Tb,Tc,Ka,Ta,Vamax,Vamin,Kb,Vrmax,Vrmin,Te,Vfemax,Kh,Kf,Tf,Kc,Kd,Ke,E1,Se1,E2,Se2,Tf1,Tf2,Tf3,Kevar,UEL,Vos,Vmax,Vmin,Tc1,Tb1,Klr,Ilr,CATEGORIA,Rt,CAUSA,EDAC,POTENCIA,Kl,Vlr,Vimax,Vimin,FACTOR_PART,Bs_CESSA,Bs_CRE,Bs_ELFEC,Bs_ELFEO,Bs_EPZ,Bs_SEPSA,W,X,Y,Etd,Tcd,Trate,T,Max,Min,Ecr,K3,B,C,K4,K5,T3,T4,Tt,T5,Af1,Bf1,Af2,Bf2,Cf2,K6,Tc,DROOP,KP,KI,KD,Td,OCOMERCIAL,INTERRUPTOR,fp,MVAr1,MVAr2,Td1,Td2,Tq1,Tq2,H,D,Ra,Rd,Xq,Xd,Xq1,Xd2,Xo,Xn,S1,S2,Xt,Bs_kW_PF,kW_PF,Bs_PF,kW_PR,Bs_PR,Bs_PRF,Bs_PPG,K,T1,T2,Pmax,Pmin,Tg,Tp,Uo,Uc,Sigma,Delta,DelTw,A11,A13,A21,A23,Ic,Bus,A1,A2,A3,A4,A5,A6,T6,Ks,Lsmax,Lsmin,Vcu,Vcl,Efdmin,TRAMO,CIRCUITO,km,Co,MVASobrecarga,Rpu,Xlpu,Su,MWef,Hop,Hindforz,Hindpro,Hequind,RegOp,FacIndisp,PEN,FIP,FITRF,Bs_kW_RF,Bs_kW_PA,Bs_kW_RFA,Ic1,Rembus1,Ic2,Rembus2,M,N,Tw1,Tw2,Tw3,Tw4,TW,T7,Ks2,Ks3,T8,T9,Ks1,Vstmax,Vstmin,REA,K2,Limit,TRA,Xlt,PerGate,PermPe,Tpe,Kp,Ki,Tdv,Gtmxop,Gtmxcl,Gmax,Gmin,Dturb,Tw,Dband,Dpv,Dicn,Gate1,Gate2,Gate3,Gate4,Gate5,Flowg1,Flowg2,Flowg3,Flowg4,Flowg5,Flowp1,Flowp2,Flowp3,Flowp4,Flowp5,Flowp6,Flowp7,Flowp8,Flowp9,Flowp10,Pmech1,Pmech2,Pmech3,Pmech4,Pmech5,Pmech6,Pmech7,Pmech8,Pmech9,Pmech10,TREG,REG,TA,TB,Velmx,Velmn,Gatmx,Gatmn,G0,G1,P1,G2,P2,P3
+FLOAT,H1,H2,H3,H4,H5,H6,H7,H8,H9,H10,H11,H12,H13,H14,H15,H16,H17,H18,H19,H20,H21,H22,H23,H24,MWh_E,Bs_MWh_E,Bs_E,Bs_kW_PP,kW_PP,Bs_PP,Bs_kW_PD,Bs_PD,Bs_MWh_TDE,Bs_TDE,Bs_MWh_ISA,Bs_ISA,Comp_Bs,Bs_MWh_EA,Bs_EA,Bs_kW_PFA,Bs_PPA,Bs_kW_PDA,Bs_PDA
+DESCRIPCIÓN,DESCRIPCION,DESCRIPCIÓN
+VALORES_UNICOS,ÁREA,EMPRESA,STI,kV,CONEXIÓN
+HORAS,DE,A

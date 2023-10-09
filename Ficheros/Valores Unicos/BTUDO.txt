@@ -1,0 +1,35 @@
+AÑO
+MES
+DÍA
+EMPRESA;Alt & Assoc.ca;Corani;Mamboraya;EDEL;Caterina;De La Paz;Camboraya;Emprelpaz;ENFAC;SSA;Ejemplo1;EPZ;ISABOL;ELFEO;EPSA;TDE;SETB;ERESA
+ÁREA;Coochabamba;Chuquisaca;Este;Sucre;Oeste;Santa Cruz;Sur;Oruro;Oriente;Cochabamba;Occidente;Pando ;La Paz;Beni;Norte;Tarija;NORTE;CENTRAL;ORURO;SUR;ORIENTAL;OESTE;ALTIPLANO
+SISTEMA;Valles;Rios;Montañas;Altiplano;Zongo;Corani;CORANI;CRUZ;ZONGO;MONTAÑAS
+TIPO;Forzado;Eolico;Termo;Hidro;FORZADO;EOLICO;HIDRO;TERMO
+CENTRAL;Sac;Aff;EFF;Dar;Cor;COR;SAC;DAR;SEA
+UNIDAD
+NODO
+kV
+H1
+H2
+H3
+H4
+H5
+H6
+H7
+H8
+H9
+H10
+H11
+H12
+H13
+H14
+H15
+H16
+H17
+H18
+H19
+H20
+H21
+H22
+H23
+H24
